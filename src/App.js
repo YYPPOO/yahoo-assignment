@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import initProducts from './mockData';
+import ItemCell from './components/ItemCell';
+import styles from './App.module.scss';
 
 function App() {
+  const [products, setProducts] = useState(initProducts);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.page}>
+      <div className={styles.itemWrap}>
+        {
+          products.map(item => <ItemCell key={item.id} product={item} />)
+        }
+      </div>
     </div>
   );
 }
