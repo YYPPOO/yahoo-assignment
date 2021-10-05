@@ -20,7 +20,7 @@ const ItemCell = ({ product }) => {
     </div>
     <div className={styles.contentWrap}>
       <header>
-        {product.title}
+        {product.name}
       </header>
       <div className={styles.priceWrap}>
         {
