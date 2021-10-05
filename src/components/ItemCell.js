@@ -10,41 +10,44 @@ const ItemCell = ({ product }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const currentImage = product.images[imageIndex];
+  console.log('currentImage: ', currentImage);
   const rating = Math.floor(product.rating);
   const hasHalfRating = !(rating === product.rating);
 
-  return <section>
+  return <section className={styles.itemCell}>
     <div className={styles.imageWrap}>
-      <img src={currentImage.url} alt={currentImage.description} />
+      <div className={styles.image} style={{ backgroundImage: `url(${currentImage.url})` }}></div>
     </div>
-    <title>
-      {product.title}
-    </title>
-    <div className={styles.priceWrap}>
-      {
-        product.discount
-          ? <span>
-            <del>{product.price}</del>
-            <strong>{product.price - product.discount}</strong>
-          </span>
-          : <span>{product.price}</span>
-      }
+    <div className={styles.contentWrap}>
+      <header>
+        {product.title}
+      </header>
+      <div className={styles.priceWrap}>
+        {
+          product.discount
+            ? <span>
+              <del>${product.price}</del>
+              <strong>${product.price - product.discount}</strong>
+            </span>
+            : <span>{product.price}</span>
+        }
+      </div>
+      <div className={styles.rating}>
+        {
+          ratingArray.map(item => {
+            return item <= rating
+              ? <Star key={item} />
+              : null
+          })
+        }
+        {
+          hasHalfRating ? <Star isHalf /> : null
+        }
+      </div>
+      <footer>
+        <button><Heart isActived={product.isFollowed} /></button>
+      </footer>
     </div>
-    <div className={styles.rating}>
-      {
-        ratingArray.map(item => {
-          return item <= rating
-            ? <Star key={item} />
-            : null
-        })
-      }
-      {
-        hasHalfRating ? <Star isHalf /> : null
-      }
-    </div>
-    <footer>
-      <button><Heart isActived={product.isFollowed} /></button>
-    </footer>
   </section>
 }
 

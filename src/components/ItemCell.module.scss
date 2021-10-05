@@ -1,0 +1,46 @@
+.itemCell {
+  width: 200px;
+  border: 1px solid lightgray;
+}
+
+.imageWrap {
+  width: 100%;
+  height: 150px;
+}
+
+.image {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.contentWrap {
+  background-color: #eee;
+  padding: 1em;
+  header {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .priceWrap {
+    font-size: 0.8em;
+    margin: 1em 0;
+    del {
+      margin-right: 0.5em;
+    }
+  }
+  .rating {
+    font-size: 0.8em;
+  }
+  footer {
+    text-align: end;
+    button {
+      border: 0;
+      background-color: transparent;
+    }
+  }
+}
