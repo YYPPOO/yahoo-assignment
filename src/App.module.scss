@@ -1,4 +1,23 @@
-.App {
-  text-align: center;
+.page {
+  margin: 0 auto;
+  width: fit-content;
 }
 
+.itemWrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  margin: 1em 0;
+}
+
+@media (min-width: 768px) {
+  .itemWrap {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .itemWrap {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
