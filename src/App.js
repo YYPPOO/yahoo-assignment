@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import initProducts from './mockData';
+import initProducts from './assets/mockData';
 import ItemCell from './components/ItemCell';
 import styles from './App.module.scss';
 
