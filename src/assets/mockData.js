@@ -34,6 +34,6 @@ const product = {
 
 const productQuantity = 7;
 
-const initProducts = Array.from({ length: productQuantity }, (item, index) => ({ ...product, id: index }))
+const initProducts = Array.from({ length: productQuantity }, (item, index) => ({ ...product, id: index.toString() }))
 
 export default initProducts;

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import initProducts from './assets/mockData';
 import ItemCell from './components/ItemCell';
@@ -7,20 +7,33 @@ import styles from './App.module.scss';
 
 function App() {
   const products = initProducts;
-  const [followedId, setFollowedId] = useState([]);
+  const [followedIds, setFollowedIds] = useState([]);
   const [showWishlist, setShowWishlist] = useState(false);
 
   const toggleFollowItem = useCallback(id => {
-    setFollowedId(state => {
+    setFollowedIds(state => {
       return state.includes(id)
         ? state.filter(item => item !== id)
         : state.concat(id)
     });
   }, []);
 
-  const followedProducts = products.filter(item => followedId.includes(item.id));
+  const followedProducts = products.filter(item => followedIds.includes(item.id));
   const openWishlistModal = useCallback(() => setShowWishlist(true), []);
   const closeWishlistModal = useCallback(() => setShowWishlist(false), []);
+
+  useEffect(() => {
+    if (localStorage.followedIds) {
+      setFollowedIds(JSON.parse(localStorage.getItem('followedIds')));
+    }
+  }, []);
+  
+  useEffect(() => {
+    const followedIdsString = JSON.stringify(followedIds);
+    if (localStorage.getItem('followedIds') !== followedIdsString) {
+      localStorage.setItem('followedIds', followedIdsString);
+    }
+  }, [followedIds]);
 
   return (
     <div className={styles.page}>
@@ -30,14 +43,14 @@ function App() {
             <ItemCell
               key={item.id}
               product={item}
-              isFollowed={followedId.includes(item.id)}
+              isFollowed={followedIds.includes(item.id)}
               toggleFollowItem={toggleFollowItem}
             />
           ))
         }
       </div>
       <footer className={styles.footer} onClick={openWishlistModal}>
-        {followedId.length} products in Wishlist
+        {followedIds.length} products in Wishlist
       </footer>
       <WishlistModal
         products={followedProducts}
