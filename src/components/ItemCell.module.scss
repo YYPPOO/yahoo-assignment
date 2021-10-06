@@ -54,10 +54,27 @@
   transition: transform 0.3s;
 }
 
+.imagePlaceholder {
+  text-align: center;
+}
+
 .image {
   width: 200px;
   height: 100%;
   object-fit: cover;
+}
+
+.discountTag {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font-size: 0.5em;
+  font-weight: bold;
+  background-color: lightgray;
+  border-radius: 2px;
+  color: red;
+  padding: 3px;
+  opacity: 0.8;
 }
 
 .imageIndicator {
@@ -87,10 +104,6 @@
     text-overflow: ellipsis;
     font-size: 1em;
     font-weight: bold;
-    a {
-      color: unset;
-      text-decoration: unset;
-    }
   }
   .priceWrap {
     font-size: 0.8em;

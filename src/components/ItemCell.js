@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 
 import Star from './icons/Star';
 import Heart from './icons/Heart';
+import Percentage from './Percentage';
 import styles from './ItemCell.module.scss';
 
 const ratingArray = [1, 2, 3, 4, 5];
@@ -12,10 +13,6 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
   const handleFollowItem = useCallback(() => {
     if (typeof toggleFollowItem === 'function') toggleFollowItem(product.id);
   }, [toggleFollowItem, product]);
-
-  const handleNavigate = useCallback(event => {
-    event.preventDefault();
-  }, []);
 
   const imageQuantity = product.images ? product.images.length : 0;
 
@@ -60,7 +57,7 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
               ))
             }
           </div>
-          : <span>No image available.</span>
+          : <div className={styles.imagePlaceholder}>No image available.</div>
       }
       {
         imageQuantity > 1
@@ -68,6 +65,14 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
             <button className={styles.nextButton} onClick={goNextImage}>{'>'}</button>
             <button className={styles.previousButton} onClick={goPreviousImage}>{'<'}</button>
           </>
+          : null
+      }
+      {
+        product.discount
+          ? <div className={styles.discountTag}>
+            <Percentage ratio={product.discount / product.price} />
+            Off
+          </div>
           : null
       }
     </div>
@@ -83,10 +88,8 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
           </div>
           : null
       }
-      <header>
-        <a href="/" title={product.name} onClick={handleNavigate}>
-          {product.name}
-        </a>
+      <header title={product.name}>
+        {product.name}
       </header>
       <div className={styles.priceWrap}>
         {
@@ -95,7 +98,7 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
               <strong>${product.price - product.discount}</strong>
               <del>${product.price}</del>
             </span>
-            : <span><strong>{product.price}</strong></span>
+            : <span><strong>${product.price}</strong></span>
         }
       </div>
       <div className={styles.rating}>

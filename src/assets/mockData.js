@@ -1,8 +1,13 @@
-const product = {
-  name: 'Orren Ellis Chana 3-Light LED Kitchen Island Dome Pendant',
-  rating: 4.5,
-  price: 790,
-  discount: 100,
+const ratings = [4.5, 2.5, 3, 4, 1.5, 2, 5];
+const prices = [790, 90, 190, 290, 390, 490, 590];
+const discounts = [100, 50, 30, 0, 90, 0, 250];
+
+const createProduct = index => ({
+  id: index.toString(),
+  name: `Orren Ellis Chana ${index || '3'}-Light LED Kitchen Island Dome Pendant`,
+  rating: ratings[index],
+  price: prices[index],
+  discount: discounts[index],
   images: [
     {
       id: 'image1',
@@ -30,10 +35,8 @@ const product = {
       description: 'image5',
     },
   ],
-};
+});
 
-const productQuantity = 7;
-
-const initProducts = Array.from({ length: productQuantity }, (item, index) => ({ ...product, id: index.toString() }))
+const initProducts = ratings.map((item, index) => createProduct(index));
 
 export default initProducts;
