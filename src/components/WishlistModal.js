@@ -27,7 +27,9 @@ const WishlistModal = ({ products = [], showModal, closeModal }) => {
       <div className={styles.container}>
         <header>
           <span>Wishlist</span>
-          <button onClick={handleCloseModal}>X</button>
+          <button onClick={handleCloseModal}>
+            <img src={`${process.env.PUBLIC_URL}/icons/close.png`} alt="close" />
+          </button>
         </header>
         {
           products.length
@@ -36,7 +38,7 @@ const WishlistModal = ({ products = [], showModal, closeModal }) => {
                 products.map(item => <WishlistItem key={item.id} product={item} />)
               }
             </ul>
-            : 'No item in wishlist.'
+            : <small>No item in wishlist.</small>
         }
       </div>
     </div>

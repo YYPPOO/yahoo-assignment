@@ -20,6 +20,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #C8E8AC;
+  border-radius: 2px;
   padding: 1em;
   z-index: 10;
   display: flex;
@@ -30,6 +31,14 @@
     margin-bottom: 1em;
     span {
       font-weight: bold;
+    }
+    button {
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      img {
+        width: 0.8em;
+      }
     }
   }
   ul {

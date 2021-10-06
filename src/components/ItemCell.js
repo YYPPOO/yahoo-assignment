@@ -13,6 +13,10 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
     if (typeof toggleFollowItem === 'function') toggleFollowItem(product.id);
   }, [toggleFollowItem, product]);
 
+  const handleNavigate = useCallback(event => {
+    event.preventDefault();
+  }, []);
+
   const currentImage = product.images[imageIndex];
   console.log('currentImage: ', currentImage);
   const rating = Math.floor(product.rating);
@@ -24,16 +28,18 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
     </div>
     <div className={styles.contentWrap}>
       <header>
-        {product.name}
+        <a href="/" title={product.name} onClick={handleNavigate}>
+          {product.name}
+        </a>
       </header>
       <div className={styles.priceWrap}>
         {
           product.discount
             ? <span>
-              <del>${product.price}</del>
               <strong>${product.price - product.discount}</strong>
+              <del>${product.price}</del>
             </span>
-            : <span>{product.price}</span>
+            : <span><strong>{product.price}</strong></span>
         }
       </div>
       <div className={styles.rating}>

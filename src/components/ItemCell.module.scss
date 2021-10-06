@@ -1,6 +1,7 @@
 .itemCell {
   width: 200px;
   border: 1px solid lightgray;
+  border-radius: 2px;
 }
 
 .imageWrap {
@@ -25,11 +26,15 @@
     text-overflow: ellipsis;
     font-size: 1em;
     font-weight: bold;
+    a {
+      color: unset;
+      text-decoration: unset;
+    }
   }
   .priceWrap {
     font-size: 0.8em;
     margin: 1em 0;
-    del {
+    strong {
       margin-right: 0.5em;
     }
   }
