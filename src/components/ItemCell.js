@@ -17,14 +17,58 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
     event.preventDefault();
   }, []);
 
-  const currentImage = product.images[imageIndex];
-  console.log('currentImage: ', currentImage);
+  const imageQuantity = product.images ? product.images.length : 0;
+
+  const goNextImage = useCallback(() => {
+    setImageIndex(state => {
+      state++;
+      if (state >= imageQuantity) state = 0;
+      return state;
+    })
+  }, [imageQuantity]);
+
+  const goPreviousImage = useCallback(() => {
+    setImageIndex(state => {
+      state--;
+      if (state < 0) state = imageQuantity - 1;
+      return state;
+    });
+  }, [imageQuantity])
+
   const rating = Math.floor(product.rating);
   const hasHalfRating = !(rating === product.rating);
 
   return <section className={styles.itemCell}>
-    <div className={styles.imageWrap}>
-      <div className={styles.image} style={{ backgroundImage: `url(${currentImage.url})` }}></div>
+    <div className={styles.imageView}>
+      {
+        imageQuantity
+          ? <div
+            className={styles.imageWrap}
+            style={{
+              width: `${100 * imageQuantity}%`,
+              transform: `translateX(-${100 * imageIndex / imageQuantity}%)`
+            }}
+          >
+            {
+              product.images.map(item => (
+                <div
+                  key={item.id}
+                  className={styles.image}
+                  style={{ backgroundImage: `url(${item.url})` }}
+                />
+              ))
+            }
+          </div>
+          : <span>No image available.</span>
+      }
+      {
+        imageQuantity >= 1
+          ? <>
+            <button className={styles.nextButton} onClick={goNextImage}>{'>'}</button>
+            <button className={styles.previousButton} onClick={goPreviousImage}>{'<'}</button>
+          </>
+          : null
+      }
     </div>
     <div className={styles.contentWrap}>
       <header>
