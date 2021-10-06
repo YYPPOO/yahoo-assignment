@@ -14,7 +14,7 @@ const WishlistItem = ({ product }) => {
           />
           : null
       }
-      <div className={styles.name}>{product.name}</div>
+      <div className={styles.name} title={product.name}>{product.name}</div>
     </li>
   )
 }
