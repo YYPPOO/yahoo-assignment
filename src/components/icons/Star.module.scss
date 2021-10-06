@@ -1,0 +1,6 @@
+.icon {
+  width: 16px;
+  & + .icon {
+    margin-left: 5px;
+  }
+}

@@ -16,7 +16,7 @@
 
 .contentWrap {
   background-color: #eee;
-  padding: 1em;
+  padding: 1em 1em 0.5em;
   header {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -40,7 +40,9 @@
     text-align: end;
     button {
       border: 0;
-      background-color: transparent;
+      height: fit-content;
+      padding: 0;
+      cursor: pointer;
     }
   }
 }
