@@ -6,24 +6,41 @@ import WishlistModal from './components/WishlistModal';
 import styles from './App.module.scss';
 
 function App() {
-  const [products, setProducts] = useState(initProducts);
+  const products = initProducts;
+  const [followedId, setFollowedId] = useState([]);
   const [showWishlist, setShowWishlist] = useState(false);
 
-  const followedProducts = products.filter(item => item.isFollowed);
+  const toggleFollowItem = useCallback(id => {
+    setFollowedId(state => {
+      return state.includes(id)
+        ? state.filter(item => item !== id)
+        : state.concat(id)
+    });
+  }, []);
+
+  const followedProducts = products.filter(item => followedId.includes(item.id));
+  const openWishlistModal = useCallback(() => setShowWishlist(true), []);
   const closeWishlistModal = useCallback(() => setShowWishlist(false), []);
 
   return (
     <div className={styles.page}>
       <div className={styles.itemWrap}>
         {
-          products.map(item => <ItemCell key={item.id} product={item} />)
+          products.map(item => (
+            <ItemCell
+              key={item.id}
+              product={item}
+              isFollowed={followedId.includes(item.id)}
+              toggleFollowItem={toggleFollowItem}
+            />
+          ))
         }
       </div>
-      <footer className={styles.footer}>
-        {followedProducts.length} products in Wishlist
+      <footer className={styles.footer} onClick={openWishlistModal}>
+        {followedId.length} products in Wishlist
       </footer>
       <WishlistModal
-        products={followedProducts} 
+        products={followedProducts}
         showModal={showWishlist}
         closeModal={closeWishlistModal}
       />

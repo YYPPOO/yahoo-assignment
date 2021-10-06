@@ -25,7 +25,6 @@ const product = {
       description: 'image5',
     },
   ],
-  isFollowed: false,
 };
 
 const productQuantity = 7;

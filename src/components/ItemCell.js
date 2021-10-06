@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import Star from './icons/Star';
 import Heart from './icons/Heart';
@@ -6,8 +6,12 @@ import styles from './ItemCell.module.scss';
 
 const ratingArray = [1, 2, 3, 4, 5];
 
-const ItemCell = ({ product }) => {
+const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
   const [imageIndex, setImageIndex] = useState(0);
+
+  const handleFollowItem = useCallback(() => {
+    if (typeof toggleFollowItem === 'function') toggleFollowItem(product.id);
+  }, [toggleFollowItem, product]);
 
   const currentImage = product.images[imageIndex];
   console.log('currentImage: ', currentImage);
@@ -45,7 +49,9 @@ const ItemCell = ({ product }) => {
         }
       </div>
       <footer>
-        <button><Heart isActived={product.isFollowed} /></button>
+        <button onClick={handleFollowItem}>
+          <Heart isActived={isFollowed} />
+        </button>
       </footer>
     </div>
   </section>
