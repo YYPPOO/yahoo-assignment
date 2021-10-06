@@ -51,10 +51,11 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
           >
             {
               product.images.map(item => (
-                <div
+                <img
                   key={item.id}
                   className={styles.image}
-                  style={{ backgroundImage: `url(${item.url})` }}
+                  src={item.url}
+                  alt={item.description}
                 />
               ))
             }

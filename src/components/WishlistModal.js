@@ -7,7 +7,11 @@ const WishlistItem = ({ product }) => {
     <li className={styles.itemWrap}>
       {
         image
-          ? <div className={styles.image} style={{ backgroundImage: `url(${image.url})` }}></div>
+          ? <img
+            className={styles.image}
+            src={image.url}
+            alt={image.description}
+          />
           : null
       }
       <div className={styles.name}>{product.name}</div>

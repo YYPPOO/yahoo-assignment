@@ -57,8 +57,7 @@
 .image {
   width: 200px;
   height: 100%;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
 }
 
 .contentWrap {
