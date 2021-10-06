@@ -60,9 +60,25 @@
   object-fit: cover;
 }
 
+.imageIndicator {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  div {
+    width: 5px;
+    height: 5px;
+    margin: 5px 3px;
+    border-radius: 50%;
+    background-color: #ccc;
+  }
+  .currentIndicator {
+    background-color: #666;
+  }
+}
+
 .contentWrap {
   background-color: #eee;
-  padding: 1em 1em 0.5em;
+  padding: 0 1em 0.5em;
   header {
     display: -webkit-box;
     -webkit-box-orient: vertical;

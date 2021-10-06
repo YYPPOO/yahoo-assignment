@@ -63,7 +63,7 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
           : <span>No image available.</span>
       }
       {
-        imageQuantity >= 1
+        imageQuantity > 1
           ? <>
             <button className={styles.nextButton} onClick={goNextImage}>{'>'}</button>
             <button className={styles.previousButton} onClick={goPreviousImage}>{'<'}</button>
@@ -72,6 +72,17 @@ const ItemCell = ({ product, isFollowed, toggleFollowItem }) => {
       }
     </div>
     <div className={styles.contentWrap}>
+      {
+        imageQuantity
+          ? <div className={styles.imageIndicator}>
+            {
+              product.images.map((item, index) => (
+                <div key={item.id} className={index === imageIndex ? styles.currentIndicator : ''} />
+              ))
+            }
+          </div>
+          : null
+      }
       <header>
         <a href="/" title={product.name} onClick={handleNavigate}>
           {product.name}
