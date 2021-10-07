@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/yahoo-assignment/static/css/main.3926599e.chunk.css",
+    "main.css": "/yahoo-assignment/static/css/main.2ebd04e9.chunk.css",
     "main.js": "/yahoo-assignment/static/js/main.6239f8c5.chunk.js",
     "main.js.map": "/yahoo-assignment/static/js/main.6239f8c5.chunk.js.map",
     "runtime-main.js": "/yahoo-assignment/static/js/runtime-main.8f6c4faf.js",
@@ -10,13 +10,13 @@
     "static/js/3.608d5fc6.chunk.js": "/yahoo-assignment/static/js/3.608d5fc6.chunk.js",
     "static/js/3.608d5fc6.chunk.js.map": "/yahoo-assignment/static/js/3.608d5fc6.chunk.js.map",
     "index.html": "/yahoo-assignment/index.html",
-    "static/css/main.3926599e.chunk.css.map": "/yahoo-assignment/static/css/main.3926599e.chunk.css.map",
+    "static/css/main.2ebd04e9.chunk.css.map": "/yahoo-assignment/static/css/main.2ebd04e9.chunk.css.map",
     "static/js/2.eaf04d1f.chunk.js.LICENSE.txt": "/yahoo-assignment/static/js/2.eaf04d1f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8f6c4faf.js",
     "static/js/2.eaf04d1f.chunk.js",
-    "static/css/main.3926599e.chunk.css",
+    "static/css/main.2ebd04e9.chunk.css",
     "static/js/main.6239f8c5.chunk.js"
   ]
 }
