@@ -52,6 +52,12 @@
   }
 }
 
+@media (max-width: 499px) {
+  .container {
+    width: 80%;
+  }
+}
+
 .itemWrap {
   list-style: none;
   display: flex;
